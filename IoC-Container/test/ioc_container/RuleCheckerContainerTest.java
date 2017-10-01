@@ -25,11 +25,11 @@ public class RuleCheckerContainerTest {
         // Given
         CheckableRule rule1 = mock(CheckableRule.class);
         CheckableRule rule2 = mock(CheckableRule.class);
+
+        // When
         cut.addRule(rule1);
         cut.addRule(rule2);
 
-        // When
-        cut.init();
         // Then
         verify(rule1).execute(mockLogger);
         verify(rule2).execute(mockLogger);

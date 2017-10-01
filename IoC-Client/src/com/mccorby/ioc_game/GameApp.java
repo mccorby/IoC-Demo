@@ -20,6 +20,5 @@ public class GameApp {
         RuleCheckerContainer container = new RuleCheckerContainer(logger);
         container.addRule(playerNameRule);
         container.addRule(boardInitRule);
-        container.init();
     }
 }

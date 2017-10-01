@@ -11,33 +11,29 @@ public class RuleCheckerContainer {
     public RuleCheckerContainer(Logger logger) {
 
         this.logger = logger;
+        init();
     }
 
-    public void addRule(CheckableRule rule) {
+    private void init() {
+        logger.logMessage("Container. Doing initialisation operations");
         if (ruleList == null) {
             ruleList = new ArrayList<>();
         }
+
+        logger.logMessage("Container. Init finished. Waiting for rules to process!");
+    }
+
+    public void addRule(CheckableRule rule) {
         ruleList.add(rule);
+        triggerRuleExecution(rule);
     }
 
-    public void init() {
-        doStuffBeforeExecutingRules();
-        for (CheckableRule rule: ruleList) {
-            rule.execute(logger);
-            doStuffAfterExecutingOneRule(rule);
-        }
-        doMoreStuffAfterExecutionAllRules();
-    }
-
-    private void doMoreStuffAfterExecutionAllRules() {
-        logger.logMessage("Container. Doing more stuff after executing all rules");
+    private void triggerRuleExecution(CheckableRule rule) {
+        rule.execute(logger);
+        doStuffAfterExecutingOneRule(rule);
     }
 
     private void doStuffAfterExecutingOneRule(CheckableRule rule) {
         logger.logMessage("Container. Doing stuff after executing rule " + rule.toString());
-    }
-
-    private void doStuffBeforeExecutingRules() {
-        logger.logMessage("Container. Doing stuff before executing the rules");
     }
 }
