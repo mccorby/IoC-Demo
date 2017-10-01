@@ -7,15 +7,29 @@ package ioc_container;
  */
 public abstract class CheckableRule {
 
+    /**
+     * Defines if this rule complies with a set of preconditions
+     * @return <code>true</code> if the rule complies with the preconditions; <code>false</code>
+     */
     abstract protected boolean preExecution();
+
+    /**
+     * Defines the main process of this rule
+     */
     abstract protected void executeBody();
+
+    /**
+     * Defines if this rule complies with a set of post-conditions
+     * @return <code>true</code> if the rule complies with the post-conditions; <code>false</code>
+     */
     abstract protected boolean postExecution();
 
     /**
+     * Implementation of the Template method.
      *
-     * @param logger
+     * @param logger a client-provided logger to communicate the process of the execution
      */
-    final void execute(Logger logger) {
+    public final void execute(Logger logger) {
         if (!preExecution()) {
             logger.logMessage(toString() + ": Precondition not satisfied. Canceling execution");
             return;

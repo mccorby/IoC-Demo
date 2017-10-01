@@ -1,5 +1,7 @@
-package ioc_container;
+package ioc_container.containers;
 
+import ioc_container.CheckableRule;
+import ioc_container.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -8,16 +10,16 @@ import org.mockito.MockitoAnnotations;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class RuleCheckerContainerTest {
+public class SimpleRuleCheckerContainerTest {
 
     @Mock
     private Logger mockLogger;
-    private RuleCheckerContainer cut;
+    private SimpleRuleCheckerContainer cut;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        cut = new RuleCheckerContainer(mockLogger);
+        cut = new SimpleRuleCheckerContainer(mockLogger);
     }
 
     @Test

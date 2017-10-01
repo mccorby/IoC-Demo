@@ -1,11 +1,12 @@
 package com.mccorby.ioc_game;
 
-import com.mccorby.ioc_game.domain.*;
+import com.mccorby.ioc_game.domain.Player;
 import com.mccorby.ioc_game.domain.rules.BoardInitRule;
 import com.mccorby.ioc_game.domain.rules.PlayerNameRule;
 import ioc_container.CheckableRule;
 import ioc_container.Logger;
 import ioc_container.RuleCheckerContainer;
+import ioc_container.containers.SimpleRuleCheckerContainer;
 
 public class GameApp {
 
@@ -17,7 +18,7 @@ public class GameApp {
         boolean[][] board = new boolean[10][10];
         CheckableRule boardInitRule = new BoardInitRule(board);
 
-        RuleCheckerContainer container = new RuleCheckerContainer(logger);
+        RuleCheckerContainer container = new SimpleRuleCheckerContainer(logger);
         container.addRule(playerNameRule);
         container.addRule(boardInitRule);
     }
